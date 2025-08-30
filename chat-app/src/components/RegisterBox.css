@@ -1,0 +1,264 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.authcontainer {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  backdrop-filter: blur(5px);
+}
+
+.authcontainer form {
+  width: 100%;
+  background: #fff;
+  padding: 30px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.selection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.selection p {
+  flex: 1;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 0;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.3s, border-bottom 0.3s;
+  border-bottom: 2px solid transparent;
+}
+
+.selection p:hover {
+  color: #111;
+  border-bottom: 2px solid #111;
+}
+
+.selection p.active {
+  color: #2563eb;
+  font-weight: 600;
+  border-bottom: 2px solid #2563eb;
+}
+
+.inputs {
+  width: 100%;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  width: 100%;
+  background: #f9f9f9;
+}
+
+.input-group svg {
+  margin-right: 10px;
+  color: #666;
+}
+
+.input-group input {
+  border: none;
+  outline: none;
+  flex: 1;
+  background: transparent;
+  font-size: 14px;
+}
+
+.submit-btn {
+  background: #2563eb;
+  color: #fff;
+  padding: 12px;
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.submit-btn:hover {
+  background: #1d4ed8;
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+  width: 100%;
+  font-size: 12px;
+  color: #888;
+}
+
+.separator::before,
+.separator::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #ddd;
+}
+
+.separator span {
+  padding: 0 10px;
+  color: #aaa;
+  font-size: 12px;
+}
+
+.social-buttons {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  justify-content: center;
+}
+
+.social-buttons button {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+.social-buttons button:hover {
+  background: #f3f3f3;
+}
+
+.auth-form h1 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  font-weight: 500;
+  color: #111;
+}
+
+.name-row {
+  display: flex;
+  gap: 10px;
+}
+
+.name-row .input-group {
+  flex: 1 1 50%;
+  min-width: 120px;
+}
+
+.name-row .input-group svg {
+  flex-shrink: 0;
+  margin-right: 10px;
+  color: #666;
+}
+
+.name-row .input-group input {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/*tablets and slightly bigger screens*/
+@media (min-width: 640px) {
+  .authcontainer {
+    max-width: 600px;
+    padding: 40px;
+  }
+
+  .authcontainer form {
+    width: 100%;
+    padding: 40px 30px;
+  }
+
+  .input-group {
+    padding: 12px;
+  }
+
+  .submit-btn {
+    padding: 14px;
+    font-size: 15px;
+  }
+
+  .social-buttons button {
+    font-size: 15px;
+  }
+
+  .name-row {
+    gap: 12px;
+  }
+}
+
+/*slightly bigger screens */
+@media (min-width: 1024px) {
+  .authcontainer {
+    max-width: 800px;
+    padding: 60px;
+  }
+
+  .authcontainer form {
+    width: 100%;
+    padding: 50px 40px;
+  }
+
+  .input-group {
+    padding: 14px;
+  }
+
+  .submit-btn {
+    padding: 16px;
+    font-size: 16px;
+  }
+
+  .selection p {
+    font-size: 16px;
+  }
+
+  .name-row {
+    gap: 15px;
+  }
+}
+
+/*for big desktop screens*/
+@media (min-width: 1440px) {
+  .authcontainer {
+    max-width: 900px;
+    padding: 80px;
+  }
+
+  .authcontainer form {
+    width: 100%;
+    padding: 60px 50px;
+  }
+
+  .submit-btn {
+    padding: 18px;
+    font-size: 17px;
+  }
+}
