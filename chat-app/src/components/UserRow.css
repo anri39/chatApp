@@ -1,0 +1,65 @@
+.userrowcontainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 8px;
+  width: 93%;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.userrowcontainer:hover {
+  background-color: #f5f5f5;
+}
+
+.profilePic {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 8px;
+}
+
+.nameandmessage {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: hidden;
+  gap: 5px;
+}
+
+.nameandmessage h1 {
+  font-size: 13px;
+  font-weight: 600;
+  color: #222;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nameandmessage p {
+  font-size: 12px;
+  color: #666;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.timestamp {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  font-size: 11px;
+  color: #777;
+  white-space: nowrap;
+}
+
+.timestamp p {
+  margin-bottom: 6px;
+}

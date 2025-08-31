@@ -1,0 +1,28 @@
+.chatpage {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.userswrapper {
+  height: 100vh;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.userswrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.chatwrapper {
+  flex: 1;
+  height: 100vh;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.chatwrapper::-webkit-scrollbar {
+  display: none;
+}

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { User, UserPlus, Mail, Lock } from "lucide-react";
 import { auth, db } from "../firebase/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 
 export default function RegisterBox({ setMode, mode }: LoginBoxProps) {
   const [name, setName] = useState("");
@@ -41,12 +41,13 @@ export default function RegisterBox({ setMode, mode }: LoginBoxProps) {
       const user = userCredential.user;
 
       await setDoc(doc(db, "users", user.uid), {
-        firstName: name,
-        lastName: lastName,
+        firstname: name,
+        lastname: lastName,
         email: email,
-        createdAt: new Date(),
+        lastseen: serverTimestamp(),
         profilepic:
           "https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small_2x/default-avatar-icon-of-social-media-user-vector.jpg",
+        checked: false,
       });
     } catch (error: any) {
       // firebase error codes
