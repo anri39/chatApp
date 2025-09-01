@@ -3,6 +3,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 import { useEffect, useState } from "react";
 import UsersList from "../components/UsersList";
+import ChatWindow from "../components/ChatWindow";
 
 export type User = {
   id: string;
@@ -51,14 +52,16 @@ export default function Chatpage() {
 
   return (
     <div className="chatpage">
-      <div className="userswrapper">
+      <div className={`userswrapper ${selectedUser ? "hidden" : ""}`}>
         <UsersList
           users={users}
           onSelectUser={setSelectedUser}
           loading={loadingUsers}
         />
       </div>
-      <div className="chatwrapper"></div>
+      <div className="chatwrapper">
+        <ChatWindow user={selectedUser} goBack={() => setSelectedUser(null)} />
+      </div>
     </div>
   );
 }

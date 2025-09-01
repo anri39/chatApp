@@ -5,13 +5,17 @@
 }
 
 .userswrapper {
+  width: 100%;
+  max-width: 350px;
+  min-width: 300px;
   height: 100vh;
   overflow-y: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  flex-shrink: 0;
 }
 
-.userswrapper::-webkit-scrollbar {
+.userswrapper::-webkit- scrollbar {
   display: none;
 }
 
@@ -25,4 +29,16 @@
 
 .chatwrapper::-webkit-scrollbar {
   display: none;
+}
+
+@media (max-width: 767px) {
+  .userswrapper.hidden {
+    display: none;
+  }
+
+  .userswrapper {
+    width: 100%;
+    max-width: none;
+    min-width: auto;
+  }
 }

@@ -1,0 +1,127 @@
+/* ChatWindow.css */
+
+.chatwindow {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* full height */
+  background-color: #fff;
+}
+
+/* Header with profile pic + name + status */
+.chatwindowheader {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.chatwindowheader img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+.fullname p:first-child {
+  font-weight: bold;
+  margin: 0;
+}
+
+.fullname p:last-child {
+  font-size: 12px;
+  color: #666;
+  margin: 0;
+}
+
+/* Messages area */
+.chatmessages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+  background-color: #f8f8f8;
+}
+
+/* Input area */
+.messageinput {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-top: 1px solid #eee;
+  background-color: #fff;
+}
+
+.messageinput input {
+  flex: 1;
+  padding: 8px 12px;
+  margin: 0 8px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  outline: none;
+  font-size: 14px;
+}
+
+.messageinput button {
+  background: #007aff;
+  color: #fff;
+  border: none;
+  border-radius: 16px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Home/back button */
+.homebtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Mobile-first: Home button visible by default */
+.homebtn svg {
+  color: #007aff;
+}
+
+/* Desktop: hide Home button and allow side-by-side view */
+@media (min-width: 768px) {
+  .homebtn {
+    display: none;
+  }
+}
+
+.chatwindow.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background: #f9f9f9;
+  color: #555;
+}
+
+.empty-state {
+  text-align: center;
+  max-width: 320px;
+  padding: 2rem;
+}
+
+.empty-state h2 {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.empty-state p {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  color: #666;
+}
+
+.empty-icon {
+  color: #888;
+}

@@ -55,7 +55,9 @@ export default function UsersList({
 
   return (
     <div className="userslist">
-      <h1 className="userslist-title">Messages</h1>
+      <div className="titlecontainer">
+        <h1 className="userslist-title">Messages</h1>
+      </div>
 
       <div className="searchcontainer">
         <Search size={16} />
