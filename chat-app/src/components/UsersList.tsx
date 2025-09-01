@@ -7,12 +7,14 @@ type UsersListProps = {
   users: User[];
   onSelectUser: (user: User) => void;
   loading?: boolean;
+  setUserNull: () => void;
 };
 
 export default function UsersList({
   users,
   onSelectUser,
   loading,
+  setUserNull,
 }: UsersListProps) {
   const renderUserRows = () => {
     if (loading) {
@@ -56,7 +58,13 @@ export default function UsersList({
   return (
     <div className="userslist">
       <div className="titlecontainer">
-        <h1 className="userslist-title">Messages</h1>
+        <h1
+          className="userslist-title"
+          onClick={setUserNull}
+          style={{ cursor: "pointer" }}
+        >
+          Messages
+        </h1>
       </div>
 
       <div className="searchcontainer">

@@ -57,6 +57,9 @@ export default function Chatpage() {
           users={users}
           onSelectUser={setSelectedUser}
           loading={loadingUsers}
+          setUserNull={() => {
+            setSelectedUser(null);
+          }}
         />
       </div>
       <div className="chatwrapper">

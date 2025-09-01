@@ -1,4 +1,4 @@
-import { Home, MessageSquare } from "lucide-react";
+import { Home, MessageSquare, Smile, Video, Info } from "lucide-react";
 import "./ChatWindow.css";
 import type { User } from "../pages/ChatPage";
 
@@ -25,23 +25,33 @@ export default function ChatWindow({ user, goBack }: ChatWindowProps) {
   return (
     <div className="chatwindow">
       <div className="chatwindowheader">
-        <img src={user.profilepic} alt={fullname} />
-        <div className="fullname">
-          <p>{fullname}</p>
-          <p style={user.checked ? { color: "green" } : { color: "black" }}>
-            {user.checked ? "Online" : "Offline"}
-          </p>
+        <div className="user-info">
+          <img src={user.profilepic} alt={fullname} />
+          <div className="fullname">
+            <p>{fullname}</p>
+            <p style={user.checked ? { color: "green" } : { color: "black" }}>
+              {user.checked ? "Online" : "Offline"}
+            </p>
+          </div>
+        </div>
+
+        <div className="header-icons">
+          <Video size={25} className="icon videocamera" />
+          <Info size={25} className="icon" />
         </div>
       </div>
 
       <div className="chatmessages">{/* messages will go here */}</div>
 
       <div className="messageinput">
+        <div className="emojibutton">
+          <Smile size={20} color="#27ae60" />
+        </div>
         <button className="homebtn" onClick={goBack}>
-          <Home size={16} />
+          <Home size={20} color="#27ae60" />
         </button>
         <input type="text" placeholder="Type a message..." />
-        <button>Send</button>
+        <button className="sendButton">Send Message</button>
       </div>
     </div>
   );
