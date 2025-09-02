@@ -173,3 +173,31 @@
     padding: 15px;
   }
 }
+
+@media (min-width: 1700px) {
+  .userslist {
+    padding: 20px;
+  }
+  
+  .titlecontainer {
+    max-width: none;
+    padding: 8px 10px;
+  }
+  
+  .userslist-title {
+    font-size: 26px;
+  }
+  
+  .searchcontainer {
+    max-width: none;
+  }
+  
+  .users {
+    max-width: none;
+  }
+  
+  .userrow {
+    max-width: none;
+    padding: 8px 10px;
+  }
+}
