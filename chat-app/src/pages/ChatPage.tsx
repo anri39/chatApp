@@ -103,7 +103,7 @@ export default function ChatPage() {
   const [selectedConv, setSelectedConv] = useState<Conversation | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
   const [currentUserProfilePic, setCurrentUserProfilePic] = useState<string>("");
-  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(window.innerWidth >= 768);
   const [currentUserId, setCurrentUserId] = useState<string | null>(null);
 
   const auth = getAuth();
