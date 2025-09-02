@@ -4,24 +4,26 @@
 }
 
 .authcontainer {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
-  width: 100%;
-  min-height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(4px);
+  padding: 20px;
 }
 
 .authcontainer form {
   width: 100%;
+  max-width: 400px;
   background: #fff;
   padding: 30px 20px;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -134,20 +136,42 @@
   justify-content: center;
 }
 
-.social-buttons button {
+.social-btn {
   flex: 1;
-  padding: 10px;
-  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border: 1px solid #e1e5e9;
   border-radius: 8px;
   background: #fff;
   cursor: pointer;
   font-size: 14px;
   font-weight: 500;
-  transition: background 0.3s;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.social-buttons button:hover {
-  background: #f3f3f3;
+.social-btn:hover {
+  background: #f8f9fa;
+  border-color: #d0d7de;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+.google-btn:hover {
+  background: #f8f9ff;
+  border-color: #4285f4;
+}
+
+.github-btn {
+  color: #24292f;
+}
+
+.github-btn:hover {
+  background: #f6f8fa;
+  border-color: #24292f;
 }
 
 .auth-form h1 {
@@ -188,12 +212,11 @@
 /*tablets and slightly bigger screens*/
 @media (min-width: 640px) {
   .authcontainer {
-    max-width: 600px;
     padding: 40px;
   }
 
   .authcontainer form {
-    width: 100%;
+    max-width: 500px;
     padding: 40px 30px;
   }
 
@@ -206,7 +229,8 @@
     font-size: 15px;
   }
 
-  .social-buttons button {
+  .social-btn {
+    padding: 14px 18px;
     font-size: 15px;
   }
 
@@ -218,12 +242,11 @@
 /*slightly bigger screens */
 @media (min-width: 1024px) {
   .authcontainer {
-    max-width: 800px;
     padding: 60px;
   }
 
   .authcontainer form {
-    width: 100%;
+    max-width: 500px;
     padding: 50px 40px;
   }
 
@@ -248,17 +271,28 @@
 /*for big desktop screens*/
 @media (min-width: 1440px) {
   .authcontainer {
-    max-width: 900px;
     padding: 80px;
   }
 
   .authcontainer form {
-    width: 100%;
+    max-width: 600px;
     padding: 60px 50px;
   }
 
   .submit-btn {
     padding: 18px;
     font-size: 17px;
+  }
+}
+
+/*for  full hd desktops and higher*/
+@media (min-width: 1700px) {
+  .authcontainer form {
+    max-width: 700px;
+    padding: 60px 50px;
+  }
+
+  .auth-form h1 {
+    font-size: 28px;
   }
 }

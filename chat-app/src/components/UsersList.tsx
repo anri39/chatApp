@@ -1,13 +1,15 @@
 import UserRow from "./UserRow";
 import "./UsersList.css";
-import { Search } from "lucide-react";
-import type { User } from "../pages/ChatPage";
+import { Search, Menu } from "lucide-react";
+import type { User, Conversation } from "../pages/ChatPage";
 
 type UsersListProps = {
   users: User[];
   onSelectUser: (user: User) => void;
   loading?: boolean;
   setUserNull: () => void;
+  conversations: Conversation[];
+  onToggleSidebar?: () => void;
 };
 
 export default function UsersList({
@@ -15,6 +17,8 @@ export default function UsersList({
   onSelectUser,
   loading,
   setUserNull,
+  conversations,
+  onToggleSidebar,
 }: UsersListProps) {
   const renderUserRows = () => {
     if (loading) {
@@ -32,6 +36,11 @@ export default function UsersList({
     if (users?.length > 0) {
       return users.map((user) => {
         const fullName = `${user.name} ${user.lastname}`;
+        const userConversation = conversations.find((conv) => {
+          return conv.participants.includes(user.id);
+        });
+        const lastMessage =
+          userConversation?.lastMessage || "no messages found";
         const formattedLastSeen = user.lastseen
           ? user.lastseen.toLocaleTimeString([], {
               hour: "2-digit",
@@ -42,7 +51,7 @@ export default function UsersList({
           <UserRow
             key={user.id}
             fullName={fullName}
-            message="Last message..."
+            message={lastMessage}
             timestamp={formattedLastSeen}
             checked={user.checked}
             profilePic={user.profilepic}
@@ -58,6 +67,9 @@ export default function UsersList({
   return (
     <div className="userslist">
       <div className="titlecontainer">
+        <button className="mobile-menu-btn" onClick={onToggleSidebar}>
+          <Menu size={24} />
+        </button>
         <h1
           className="userslist-title"
           onClick={setUserNull}

@@ -41,4 +41,10 @@
     max-width: none;
     min-width: auto;
   }
+  
+  /* On mobile, always show chat window so hamburger menu is accessible */
+  .chatwrapper {
+    display: flex;
+    flex-direction: column;
+  }
 }

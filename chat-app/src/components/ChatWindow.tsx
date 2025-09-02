@@ -1,16 +1,36 @@
-import { Home, MessageSquare, Smile, Video, Info } from "lucide-react";
+import { Home, MessageSquare, Smile, Video, Info, Menu } from "lucide-react";
+import type { User, Conversation, Message } from "../pages/ChatPage";
+import { useState } from "react";
+import type { KeyboardEvent } from "react";
 import "./ChatWindow.css";
-import type { User } from "../pages/ChatPage";
 
 type ChatWindowProps = {
   user: User | null;
+  conversation: Conversation | null;
+  messages: Message[];
   goBack: () => void;
+  sendMessage: (conversationId: string, text: string) => void;
+  onToggleSidebar?: () => void;
 };
 
-export default function ChatWindow({ user, goBack }: ChatWindowProps) {
+export default function ChatWindow({
+  user,
+  conversation,
+  messages,
+  goBack,
+  sendMessage,
+  onToggleSidebar,
+}: ChatWindowProps) {
+  const [input, setInput] = useState("");
+
   if (!user) {
     return (
       <div className="chatwindow empty">
+        <div className="empty-header">
+          <button className="menu-btn" onClick={onToggleSidebar}>
+            <Menu size={24} />
+          </button>
+        </div>
         <div className="empty-state">
           <MessageSquare size={64} className="empty-icon" />
           <h2>Welcome to Chat</h2>
@@ -22,26 +42,68 @@ export default function ChatWindow({ user, goBack }: ChatWindowProps) {
 
   const fullname = `${user.name} ${user.lastname}`;
 
+  const handleSend = () => {
+    if (!input.trim() || !conversation) return;
+    sendMessage(conversation.id, input.trim());
+    setInput("");
+  };
+
+  const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") handleSend();
+  };
+
   return (
     <div className="chatwindow">
       <div className="chatwindowheader">
-        <div className="user-info">
-          <img src={user.profilepic} alt={fullname} />
-          <div className="fullname">
-            <p>{fullname}</p>
-            <p style={user.checked ? { color: "green" } : { color: "black" }}>
-              {user.checked ? "Online" : "Offline"}
-            </p>
+        <div className="header-left">
+          <button className="menu-btn" onClick={onToggleSidebar}>
+            <Menu size={24} />
+          </button>
+          <div className="user-info">
+            <img src={user.profilepic} alt={fullname} className="header-pic" />
+            <div className="fullname">
+              <p>{fullname}</p>
+              <p style={user.checked ? { color: "green" } : { color: "black" }}>
+                {user.checked ? "Online" : "Offline"}
+              </p>
+            </div>
           </div>
         </div>
 
         <div className="header-icons">
-          <Video size={25} className="icon videocamera" />
-          <Info size={25} className="icon" />
+          <Video size={30} className="icon videocamera" />
+          <Info size={30} className="icon" />
         </div>
       </div>
 
-      <div className="chatmessages">{/* messages will go here */}</div>
+      <div className="chatmessages">
+        {messages.map((msg) => {
+          const isSent = msg.senderId === user.id ? false : true;
+          return (
+            <div
+              key={msg.id}
+              className={`message-row ${isSent ? "sent" : "received"}`}
+            >
+              {!isSent && (
+                <img
+                  src={user.profilepic}
+                  alt={fullname}
+                  className="msg-icon"
+                />
+              )}
+              <div className="message-bubble">
+                <p className="msg-text">{msg.text}</p>
+                <span className="msg-time">
+                  {msg.timestamp.toLocaleTimeString([], {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  })}
+                </span>
+              </div>
+            </div>
+          );
+        })}
+      </div>
 
       <div className="messageinput">
         <div className="emojibutton">
@@ -50,8 +112,16 @@ export default function ChatWindow({ user, goBack }: ChatWindowProps) {
         <button className="homebtn" onClick={goBack}>
           <Home size={20} color="#27ae60" />
         </button>
-        <input type="text" placeholder="Type a message..." />
-        <button className="sendButton">Send Message</button>
+        <input
+          type="text"
+          placeholder="Type a message..."
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          onKeyDown={handleKeyPress}
+        />
+        <button className="sendButton" onClick={handleSend}>
+          Send Message
+        </button>
       </div>
     </div>
   );
