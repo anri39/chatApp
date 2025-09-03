@@ -41,8 +41,8 @@ export default function UsersList({
         });
         const lastMessage =
           userConversation?.lastMessage || "no messages found";
-        const formattedLastSeen = user.lastseen
-          ? user.lastseen.toLocaleTimeString([], {
+        const formattedTimestamp = userConversation?.timestamp
+          ? userConversation.timestamp.toLocaleTimeString([], {
               hour: "2-digit",
               minute: "2-digit",
             })
@@ -52,8 +52,8 @@ export default function UsersList({
             key={user.id}
             fullName={fullName}
             message={lastMessage}
-            timestamp={formattedLastSeen}
-            checked={user.checked}
+            timestamp={formattedTimestamp}
+            checked={userConversation?.checked ?? false}
             profilePic={user.profilepic}
             onClick={() => onSelectUser(user)}
           />

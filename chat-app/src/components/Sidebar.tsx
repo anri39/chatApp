@@ -7,9 +7,10 @@ type SidebarProps = {
   currentUserProfilePic?: string;
   isOpen?: boolean;
   onClose?: () => void;
+  onOpenUserMenu?: () => void;
 };
 
-export default function Sidebar({ currentUserProfilePic, isOpen = false, onClose }: SidebarProps) {
+export default function Sidebar({ currentUserProfilePic, isOpen = false, onClose, onOpenUserMenu }: SidebarProps) {
   const handleLogout = async () => {
     try {
       await signOut(auth);
@@ -37,7 +38,7 @@ export default function Sidebar({ currentUserProfilePic, isOpen = false, onClose
         </div>
 
         <div className="sidebar-bottom">
-          <button className="settings-btn" title="Settings">
+          <button className="settings-btn" onClick={onOpenUserMenu} title="Settings">
             <Settings size={20} />
           </button>
           <button className="logout-btn" onClick={handleLogout} title="Logout">

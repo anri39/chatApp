@@ -380,6 +380,29 @@
   text-align: right;
 }
 
+@media (max-width: 440px) {
+  .sendButton {
+    text-indent: -9999px;
+    padding: 8px 12px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .sendButton::after {
+    content: "Send";
+    font-size: 14px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-indent: 0;
+  }
+  
+  .messageinput {
+    gap: 4px;
+  }
+}
+
 /* Enhanced input focus state */
 .messageinput input:focus {
   border-color: #27ae60;
