@@ -66,8 +66,9 @@
 }
 
 .input-group {
-  display: flex;
-  align-items: center;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
   border: 1px solid #ddd;
   padding: 10px;
   border-radius: 8px;
@@ -189,6 +190,9 @@
 .name-row .input-group {
   flex: 1 1 50%;
   min-width: 120px;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
 }
 
 .name-row .input-group svg {
