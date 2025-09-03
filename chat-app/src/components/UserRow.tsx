@@ -20,7 +20,10 @@ export default function UserRow({
 }: UserRowProps) {
   return (
     <div className="userrowcontainer" onClick={onClick}>
-      <img src={profilePic} alt={profilePic} className="profilePic" />
+      <div className="profile-pic-container">
+        <img src={profilePic} alt={profilePic} className="profilePic" />
+        {checked && <div className="online-indicator"></div>}
+      </div>
       <div className="nameandmessage">
         <h1>{fullName}</h1>
         <p>{message}</p>

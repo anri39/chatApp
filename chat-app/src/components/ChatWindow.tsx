@@ -1,7 +1,8 @@
-import { Home, MessageSquare, Smile, Video, Info, Menu } from "lucide-react";
+import { Home, MessageSquare, Smile, Video, Info, Menu, Search, X } from "lucide-react";
 import type { User, Conversation, Message } from "../pages/ChatPage";
 import { useState } from "react";
 import type { KeyboardEvent } from "react";
+import EmojiPicker from "./EmojiPicker";
 import "./ChatWindow.css";
 
 type ChatWindowProps = {
@@ -22,6 +23,9 @@ export default function ChatWindow({
   onToggleSidebar,
 }: ChatWindowProps) {
   const [input, setInput] = useState("");
+  const [isEmojiPickerOpen, setIsEmojiPickerOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   if (!user) {
     return (
@@ -52,6 +56,27 @@ export default function ChatWindow({
     if (e.key === "Enter") handleSend();
   };
 
+  const handleEmojiSelect = (emoji: string) => {
+    setInput(prev => prev + emoji);
+  };
+
+  const toggleEmojiPicker = () => {
+    setIsEmojiPickerOpen(!isEmojiPickerOpen);
+  };
+
+  const toggleSearch = () => {
+    setIsSearchOpen(!isSearchOpen);
+    if (!isSearchOpen) {
+      setSearchQuery("");
+    }
+  };
+
+  const filteredMessages = searchQuery.trim() 
+    ? messages.filter(message => 
+        message.text.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    : messages;
+
   return (
     <div className="chatwindow">
       <div className="chatwindowheader">
@@ -71,13 +96,37 @@ export default function ChatWindow({
         </div>
 
         <div className="header-icons">
+          <button className="search-btn" onClick={toggleSearch} title="Search Messages">
+            <Search size={20} className="icon" />
+          </button>
           <Video size={30} className="icon videocamera" />
           <Info size={30} className="icon" />
         </div>
       </div>
 
+      {isSearchOpen && (
+        <div className="search-bar">
+          <Search size={16} />
+          <input
+            type="text"
+            placeholder="Search messages..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            autoFocus
+          />
+          <button onClick={toggleSearch}>
+            <X size={16} />
+          </button>
+        </div>
+      )}
+
       <div className="chatmessages">
-        {messages.map((msg) => {
+        {filteredMessages.length === 0 && searchQuery.trim() !== "" ? (
+          <div className="no-messages">
+            <p>No messages found matching "{searchQuery}"</p>
+          </div>
+        ) : (
+          filteredMessages.map((msg) => {
           const isSent = msg.senderId === user.id ? false : true;
           return (
             <div
@@ -102,11 +151,12 @@ export default function ChatWindow({
               </div>
             </div>
           );
-        })}
+        })
+        )}
       </div>
 
       <div className="messageinput">
-        <div className="emojibutton">
+        <div className="emojibutton" onClick={toggleEmojiPicker}>
           <Smile size={20} color="#27ae60" />
         </div>
         <button className="homebtn" onClick={goBack}>
@@ -122,6 +172,11 @@ export default function ChatWindow({
         <button className="sendButton" onClick={handleSend}>
           Send Message
         </button>
+        <EmojiPicker
+          isOpen={isEmojiPickerOpen}
+          onClose={() => setIsEmojiPickerOpen(false)}
+          onEmojiSelect={handleEmojiSelect}
+        />
       </div>
     </div>
   );

@@ -3,11 +3,11 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #fff;
+  background-color: var(--bg-primary);
   overflow: hidden;
   padding: 8px;
   box-sizing: border-box;
-  border-right: 1px solid #eeeeee;
+  border-right: 1px solid var(--border-light);
 }
 
 .titlecontainer {
@@ -16,7 +16,7 @@
   justify-content: flex-start;
   max-width: 450px;
   padding: 5px 6px;
-  border-bottom: 1px solid #eeeeee;
+  border-bottom: 1px solid var(--border-light);
   gap: 12px;
 }
 
@@ -29,13 +29,13 @@
   display: none;
   align-items: center;
   justify-content: center;
-  color: #666;
+  color: var(--text-secondary);
   transition: all 0.2s ease;
 }
 
 .mobile-menu-btn:hover {
-  background-color: #f1f3f4;
-  color: #27ae60;
+  background-color: var(--bg-tertiary);
+  color: var(--accent-color);
 }
 
 /* Show mobile menu button on mobile */
@@ -49,6 +49,7 @@
   font-size: 23px;
   font-weight: bold;
   text-align: left;
+  color: var(--text-primary);
 }
 
 .searchcontainer {
@@ -64,7 +65,7 @@
   left: 12px;
   top: 50%;
   transform: translateY(-50%);
-  color: #666;
+  color: var(--text-secondary);
   z-index: 1;
   pointer-events: none;
   margin-top: 0.5rem;
@@ -74,11 +75,12 @@
   width: 100%;
   padding: 8px 12px 8px 36px;
   font-size: 15px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-color);
   border-radius: 20px;
   outline: none;
   box-sizing: border-box;
-  background-color: #eeeeee;
+  background-color: var(--input-bg);
+  color: var(--text-primary);
   margin-top: 1rem;
 }
 
@@ -117,7 +119,7 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background-color: #ccc;
+  background-color: var(--bg-tertiary);
   margin-right: 6px;
 }
 
@@ -128,7 +130,7 @@
 .placeholder-line {
   height: 6px;
   border-radius: 4px;
-  background-color: #ccc;
+  background-color: var(--bg-tertiary);
   margin-bottom: 4px;
 }
 
@@ -178,26 +180,76 @@
   .userslist {
     padding: 20px;
   }
-  
+
   .titlecontainer {
     max-width: none;
     padding: 8px 10px;
   }
-  
+
   .userslist-title {
     font-size: 26px;
   }
-  
+
   .searchcontainer {
     max-width: none;
   }
-  
+
   .users {
     max-width: none;
   }
-  
+
   .userrow {
     max-width: none;
     padding: 8px 10px;
   }
+}
+
+.no-users {
+  padding: 20px;
+  text-align: center;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* Users List Scrollbar */
+.users {
+  scrollbar-width: thin !important;
+  scrollbar-color: var(--text-muted) var(--bg-secondary) !important;
+}
+
+.users::-webkit-scrollbar {
+  width: 8px !important;
+  display: block !important;
+}
+
+.users::-webkit-scrollbar-track {
+  background: var(--bg-secondary) !important;
+  border-radius: 4px;
+}
+
+.users::-webkit-scrollbar-thumb {
+  background: var(--text-muted) !important;
+  border-radius: 4px;
+}
+
+.users::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary) !important;
+}
+
+.dark-mode .userslist-title {
+  color: #ffffff !important;
+}
+
+.dark-mode .userslist {
+  color: #ffffff !important;
+}
+
+.dark-mode .userrow h1,
+.dark-mode .userrow .nameandmessage h1 {
+  color: #ffffff !important;
+}
+
+.dark-mode .userrow p,
+.dark-mode .userrow .nameandmessage p {
+  color: #b3b3b3 !important;
 }

@@ -1,8 +1,8 @@
 .sidebar {
   width: 70px;
   height: 100vh;
-  background-color: #f8f9fa;
-  border-right: 1px solid #e9ecef;
+  background-color: var(--sidebar-bg);
+  border-right: 1px solid var(--border-light);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -19,6 +19,9 @@
 
 .profile-section {
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .sidebar-profile-pic {
@@ -28,12 +31,60 @@
   object-fit: cover;
   cursor: pointer;
   transition: transform 0.2s ease;
-  border: 2px solid #e9ecef;
+  border: 2px solid var(--border-light);
 }
 
 .sidebar-profile-pic:hover {
   transform: scale(1.05);
-  border-color: #27ae60;
+  border-color: var(--accent-color);
+}
+
+.dark-mode-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    var(--bg-secondary) 0%,
+    var(--bg-tertiary) 100%
+  );
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 4px var(--shadow-light);
+}
+
+.dark-mode-toggle:hover {
+  background: linear-gradient(
+    135deg,
+    var(--accent-color) 0%,
+    var(--accent-hover) 100%
+  );
+  color: white;
+  transform: scale(1.1) rotate(15deg);
+  box-shadow: 0 4px 8px rgba(39, 174, 96, 0.3);
+}
+
+.dark-mode-toggle:active {
+  transform: scale(0.95) rotate(15deg);
+}
+
+.dark-mode .dark-mode-toggle {
+  background: linear-gradient(135deg, #404040 0%, #2d2d2d 100%);
+  border: 1px solid #555;
+  color: #f0f0f0;
+}
+
+.dark-mode .dark-mode-toggle:hover {
+  background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+  color: white;
+  box-shadow: 0 4px 8px rgba(243, 156, 18, 0.3);
 }
 
 .sidebar-bottom {
@@ -53,19 +104,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #666;
+  color: var(--text-secondary);
   transition: all 0.2s ease;
 }
 
 .settings-btn:hover {
-  background-color: #f1f3f4;
-  color: #27ae60;
+  background-color: var(--bg-tertiary);
+  color: var(--accent-color);
   transform: scale(1.1);
 }
 
 .logout-btn:hover {
-  background-color: #f1f3f4;
-  color: #d73502;
+  background-color: var(--bg-tertiary);
+  color: var(--danger-color);
   transform: scale(1.1);
 }
 
@@ -106,5 +157,3 @@
 .sidebar {
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.04);
 }
-
-

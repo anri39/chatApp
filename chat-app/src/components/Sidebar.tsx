@@ -1,6 +1,7 @@
-import { LogOut, Settings } from "lucide-react";
+import { LogOut, Settings, Moon, Sun } from "lucide-react";
 import { auth } from "../firebase/firebase";
 import { signOut } from "firebase/auth";
+import { useState, useEffect } from "react";
 import "./Sidebar.css";
 
 type SidebarProps = {
@@ -11,6 +12,24 @@ type SidebarProps = {
 };
 
 export default function Sidebar({ currentUserProfilePic, isOpen = false, onClose, onOpenUserMenu }: SidebarProps) {
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    const saved = localStorage.getItem('darkMode');
+    return saved ? JSON.parse(saved) : false;
+  });
+
+  useEffect(() => {
+    localStorage.setItem('darkMode', JSON.stringify(isDarkMode));
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark-mode');
+    } else {
+      document.documentElement.classList.remove('dark-mode');
+    }
+  }, [isDarkMode]);
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
   const handleLogout = async () => {
     try {
       await signOut(auth);
@@ -38,6 +57,9 @@ export default function Sidebar({ currentUserProfilePic, isOpen = false, onClose
         </div>
 
         <div className="sidebar-bottom">
+          <button className="dark-mode-toggle" onClick={toggleDarkMode} title={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}>
+            {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
           <button className="settings-btn" onClick={onOpenUserMenu} title="Settings">
             <Settings size={20} />
           </button>

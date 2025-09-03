@@ -2,6 +2,7 @@ import UserRow from "./UserRow";
 import "./UsersList.css";
 import { Search, Menu } from "lucide-react";
 import type { User, Conversation } from "../pages/ChatPage";
+import { useState } from "react";
 
 type UsersListProps = {
   users: User[];
@@ -20,6 +21,7 @@ export default function UsersList({
   conversations,
   onToggleSidebar,
 }: UsersListProps) {
+  const [searchQuery, setSearchQuery] = useState("");
   const renderUserRows = () => {
     if (loading) {
       return [1, 2, 3].map((i) => (
@@ -34,7 +36,17 @@ export default function UsersList({
     }
 
     if (users?.length > 0) {
-      return users.map((user) => {
+      const filteredUsers = users.filter((user) => {
+        const fullName = `${user.name} ${user.lastname}`.toLowerCase();
+        const query = searchQuery.toLowerCase();
+        return fullName.includes(query) || user.name.toLowerCase().includes(query) || user.lastname.toLowerCase().includes(query);
+      });
+
+      if (filteredUsers.length === 0 && searchQuery.trim() !== "") {
+        return <p className="no-users">No users found matching "{searchQuery}"</p>;
+      }
+
+      return filteredUsers.map((user) => {
         const fullName = `${user.name} ${user.lastname}`;
         const userConversation = conversations.find((conv) => {
           return conv.participants.includes(user.id);
@@ -53,7 +65,7 @@ export default function UsersList({
             fullName={fullName}
             message={lastMessage}
             timestamp={formattedTimestamp}
-            checked={userConversation?.checked ?? false}
+            checked={user.checked}
             profilePic={user.profilepic}
             onClick={() => onSelectUser(user)}
           />
@@ -81,7 +93,12 @@ export default function UsersList({
 
       <div className="searchcontainer">
         <Search size={16} />
-        <input type="text" placeholder="Search" />
+        <input 
+          type="text" 
+          placeholder="Search users..." 
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
       </div>
 
       <div className="users">{renderUserRows()}</div>
