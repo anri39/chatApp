@@ -213,7 +213,6 @@
   cursor: not-allowed;
 }
 
-/*tablets and slightly bigger screens*/
 @media (min-width: 640px) {
   .authcontainer {
     padding: 40px;
@@ -243,7 +242,6 @@
   }
 }
 
-/*slightly bigger screens */
 @media (min-width: 1024px) {
   .authcontainer {
     padding: 60px;
@@ -272,7 +270,6 @@
   }
 }
 
-/*for big desktop screens*/
 @media (min-width: 1440px) {
   .authcontainer {
     padding: 80px;
@@ -289,7 +286,6 @@
   }
 }
 
-/*for  full hd desktops and higher*/
 @media (min-width: 1700px) {
   .authcontainer form {
     max-width: 700px;

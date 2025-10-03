@@ -9,6 +9,7 @@
   align-items: center;
   padding: 20px 0;
   flex-shrink: 0;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.04);
 }
 
 .sidebar-top {
@@ -152,8 +153,4 @@
   .sidebar-backdrop {
     display: block;
   }
-}
-
-.sidebar {
-  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.04);
 }

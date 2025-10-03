@@ -116,12 +116,6 @@
   transition: all 0.2s ease;
 }
 
-body.dark-mode .input-wrapper,
-html.dark-mode .input-wrapper {
-  background: #2d2d2d !important;
-  background-color: #2d2d2d !important;
-}
-
 .input-wrapper:focus-within {
   border-color: var(--accent-color);
   background: var(--bg-primary);
@@ -197,22 +191,6 @@ button.save-btn:hover:not(:disabled),
   transform: none;
 }
 
-@media (max-width: 480px) {
-  .user-menu {
-    width: 95%;
-    margin: 0 auto;
-  }
-  
-  .user-menu-content {
-    padding: 16px;
-  }
-  
-  .menu-profile-pic {
-    width: 70px;
-    height: 70px;
-  }
-}
-
 .dark-mode .user-menu-backdrop {
   background: rgba(0, 0, 0, 0.7);
 }
@@ -257,46 +235,47 @@ button.save-btn:hover:not(:disabled),
   color: var(--text-primary);
 }
 
-.dark-mode .input-wrapper {
-  background: var(--input-bg) !important;
-  border: 1px solid var(--border-color) !important;
+.dark-mode .input-wrapper,
+body.dark-mode .input-wrapper,
+html.dark-mode .input-wrapper,
+.dark-mode .user-menu .input-wrapper,
+.dark-mode .user-menu .input-group .input-wrapper,
+.dark-mode .user-menu .form-section .input-wrapper,
+html.dark-mode body .user-menu .form-section .input-group .input-wrapper,
+html.dark-mode body .user-menu .input-wrapper {
+  background: #2d2d2d !important;
+  background-color: #2d2d2d !important;
+  border: 1px solid #555 !important;
 }
 
-.dark-mode .input-wrapper:focus-within {
+.dark-mode .input-wrapper:focus-within,
+.dark-mode .user-menu .input-wrapper:focus-within,
+.dark-mode .user-menu .input-group .input-wrapper:focus-within,
+.dark-mode .user-menu .form-section .input-wrapper:focus-within,
+html.dark-mode body .user-menu .form-section .input-group .input-wrapper:focus-within,
+html.dark-mode body .user-menu .input-wrapper:focus-within {
+  background: #2d2d2d !important;
+  background-color: #2d2d2d !important;
   border-color: var(--accent-color) !important;
-  background: var(--input-bg) !important;
 }
 
-.dark-mode .input-wrapper svg {
-  color: var(--text-secondary) !important;
-}
-
+.dark-mode .input-wrapper svg,
 .dark-mode .user-menu .input-wrapper svg {
   color: #b3b3b3 !important;
 }
 
-.dark-mode .input-wrapper input {
-  color: var(--text-primary) !important;
+.dark-mode .input-wrapper input,
+.dark-mode .user-menu .input-wrapper input,
+html.dark-mode .user-menu input,
+html.dark-mode .user-menu .input-wrapper input,
+html.dark-mode body .user-menu input {
+  color: #ffffff !important;
   background: transparent !important;
+  background-color: transparent !important;
 }
 
 .dark-mode .input-wrapper input::placeholder {
   color: var(--text-muted) !important;
-}
-
-.dark-mode .user-menu .input-wrapper {
-  background: #404040 !important;
-  border: 1px solid #555 !important;
-}
-
-.dark-mode .user-menu .input-wrapper:focus-within {
-  background: #404040 !important;
-  border-color: var(--accent-color) !important;
-}
-
-.dark-mode .user-menu .input-wrapper input {
-  color: #ffffff !important;
-  background: transparent !important;
 }
 
 .dark-mode .error-message {
@@ -330,78 +309,16 @@ button.save-btn:hover:not(:disabled),
   color: white !important;
 }
 
-.dark-mode .user-menu .input-group .input-wrapper,
-.dark-mode .user-menu .form-section .input-wrapper,
-.dark-mode .user-menu .input-wrapper,
-.dark-mode .input-wrapper {
-  background: #2d2d2d !important;
-  background-color: #2d2d2d !important;
-  border: 1px solid #555 !important;
-}
-
-.dark-mode .user-menu .input-group .input-wrapper:focus-within,
-.dark-mode .user-menu .form-section .input-wrapper:focus-within,
-.dark-mode .user-menu .input-wrapper:focus-within,
-.dark-mode .input-wrapper:focus-within {
-  background: #2d2d2d !important;
-  background-color: #2d2d2d !important;
-  border-color: var(--accent-color) !important;
-}
-
-html.dark-mode .user-menu input,
-html.dark-mode .user-menu .input-wrapper input,
-.dark-mode .user-menu input,
-.dark-mode .user-menu .input-wrapper input {
-  background: transparent !important;
-  background-color: transparent !important;
-  color: #ffffff !important;
-}
-
-html.dark-mode body .user-menu .form-section .input-group .input-wrapper,
-html.dark-mode body .user-menu .input-wrapper,
-.dark-mode .user-menu .form-section .input-group .input-wrapper,
-.dark-mode .user-menu .input-wrapper {
-  background: #1a1a1a !important;
-  background-color: #1a1a1a !important;
-  border: 1px solid #404040 !important;
-}
-
-html.dark-mode body .user-menu .form-section .input-group .input-wrapper:focus-within,
-html.dark-mode body .user-menu .input-wrapper:focus-within,
-.dark-mode .user-menu .form-section .input-group .input-wrapper:focus-within,
-.dark-mode .user-menu .input-wrapper:focus-within {
-  background: #1a1a1a !important;
-  background-color: #1a1a1a !important;
-  border-color: #2ecc71 !important;
-}
-
-html.dark-mode body .user-menu input,
-.dark-mode .user-menu input {
-  background: transparent !important;
-  background-color: transparent !important;
-  color: #ffffff !important;
-}
-
 .dark-mode .user-menu *,
 .dark-mode .user-menu div,
 .dark-mode .user-menu .input-group,
 .dark-mode .user-menu .form-section,
-.dark-mode .user-menu .user-menu-content {
-  background: transparent !important;
-  background-color: transparent !important;
-}
-
+.dark-mode .user-menu .user-menu-content,
 .dark-mode .user-menu > *,
 .dark-mode .user-menu .user-menu-content > *,
 .dark-mode .user-menu .form-section > * {
   background: transparent !important;
   background-color: transparent !important;
-}
-
-.dark-mode .user-menu .input-wrapper {
-  background: #2d2d2d !important;
-  background-color: #2d2d2d !important;
-  border: 1px solid #555 !important;
 }
 
 .dark-mode .user-menu [style*="background: white"],
@@ -410,4 +327,20 @@ html.dark-mode body .user-menu input,
 .dark-mode .user-menu [style*="background-color: #fff"] {
   background: transparent !important;
   background-color: transparent !important;
+}
+
+@media (max-width: 480px) {
+  .user-menu {
+    width: 95%;
+    margin: 0 auto;
+  }
+  
+  .user-menu-content {
+    padding: 16px;
+  }
+  
+  .menu-profile-pic {
+    width: 70px;
+    height: 70px;
+  }
 }

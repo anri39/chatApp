@@ -109,7 +109,6 @@
   transform: scale(0.95);
 }
 
-/* Mobile adjustments */
 @media (max-width: 480px) {
   .emoji-picker {
     width: 280px;
@@ -135,7 +134,6 @@
   }
 }
 
-/* Desktop adjustments */
 @media (min-width: 768px) {
   .emoji-picker {
     width: 360px;

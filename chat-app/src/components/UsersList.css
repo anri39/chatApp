@@ -38,13 +38,6 @@
   color: var(--accent-color);
 }
 
-/* Show mobile menu button on mobile */
-@media (max-width: 767px) {
-  .mobile-menu-btn {
-    display: flex;
-  }
-}
-
 .userslist-title {
   font-size: 23px;
   font-weight: bold;
@@ -87,7 +80,8 @@
 .users {
   flex: 1;
   overflow-y: auto;
-  scrollbar-width: none;
+  scrollbar-width: thin !important;
+  scrollbar-color: var(--text-muted) var(--bg-secondary) !important;
   -ms-overflow-style: none;
   max-width: 450px;
   width: 100%;
@@ -96,7 +90,22 @@
 }
 
 .users::-webkit-scrollbar {
-  display: none;
+  width: 8px !important;
+  display: block !important;
+}
+
+.users::-webkit-scrollbar-track {
+  background: var(--bg-secondary) !important;
+  border-radius: 4px;
+}
+
+.users::-webkit-scrollbar-thumb {
+  background: var(--text-muted) !important;
+  border-radius: 4px;
+}
+
+.users::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary) !important;
 }
 
 .userrow {
@@ -142,6 +151,31 @@
   width: 70%;
 }
 
+.no-users {
+  padding: 20px;
+  text-align: center;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.dark-mode .userslist-title {
+  color: #ffffff !important;
+}
+
+.dark-mode .userslist {
+  color: #ffffff !important;
+}
+
+.dark-mode .userrow h1,
+.dark-mode .userrow .nameandmessage h1 {
+  color: #ffffff !important;
+}
+
+.dark-mode .userrow p,
+.dark-mode .userrow .nameandmessage p {
+  color: #b3b3b3 !important;
+}
+
 @keyframes pulse {
   0% {
     opacity: 0.6;
@@ -151,6 +185,12 @@
   }
   100% {
     opacity: 0.6;
+  }
+}
+
+@media (max-width: 767px) {
+  .mobile-menu-btn {
+    display: flex;
   }
 }
 
@@ -202,54 +242,4 @@
     max-width: none;
     padding: 8px 10px;
   }
-}
-
-.no-users {
-  padding: 20px;
-  text-align: center;
-  color: var(--text-muted);
-  font-style: italic;
-}
-
-/* Users List Scrollbar */
-.users {
-  scrollbar-width: thin !important;
-  scrollbar-color: var(--text-muted) var(--bg-secondary) !important;
-}
-
-.users::-webkit-scrollbar {
-  width: 8px !important;
-  display: block !important;
-}
-
-.users::-webkit-scrollbar-track {
-  background: var(--bg-secondary) !important;
-  border-radius: 4px;
-}
-
-.users::-webkit-scrollbar-thumb {
-  background: var(--text-muted) !important;
-  border-radius: 4px;
-}
-
-.users::-webkit-scrollbar-thumb:hover {
-  background: var(--text-secondary) !important;
-}
-
-.dark-mode .userslist-title {
-  color: #ffffff !important;
-}
-
-.dark-mode .userslist {
-  color: #ffffff !important;
-}
-
-.dark-mode .userrow h1,
-.dark-mode .userrow .nameandmessage h1 {
-  color: #ffffff !important;
-}
-
-.dark-mode .userrow p,
-.dark-mode .userrow .nameandmessage p {
-  color: #b3b3b3 !important;
 }

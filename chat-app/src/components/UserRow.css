@@ -80,6 +80,28 @@
   margin-bottom: 6px;
 }
 
+.dark-mode .nameandmessage h1,
+.dark-mode .userrowcontainer .nameandmessage h1,
+.dark-mode .userrowcontainer h1,
+.dark-mode .userrowcontainer .fullname,
+.dark-mode .userrowcontainer .username {
+  color: #ffffff !important;
+}
+
+.dark-mode .nameandmessage p,
+.dark-mode .userrowcontainer .nameandmessage p,
+.dark-mode .userrowcontainer p,
+.dark-mode .userrowcontainer .status,
+.dark-mode .userrowcontainer .offline,
+.dark-mode .userrowcontainer .online {
+  color: #b3b3b3 !important;
+}
+
+.dark-mode .timestamp,
+.dark-mode .userrowcontainer .timestamp {
+  color: #808080 !important;
+}
+
 @media (min-width: 1200px) {
   .profile-pic-container {
     margin-right: 12px;
@@ -112,34 +134,4 @@
     height: 16px;
     border: 3px solid white;
   }
-}
-
-/* Force dark mode text colors */
-.dark-mode .nameandmessage h1,
-.dark-mode .userrowcontainer .nameandmessage h1 {
-  color: #ffffff !important;
-}
-
-.dark-mode .nameandmessage p,
-.dark-mode .userrowcontainer .nameandmessage p {
-  color: #b3b3b3 !important;
-}
-
-.dark-mode .timestamp,
-.dark-mode .userrowcontainer .timestamp {
-  color: #808080 !important;
-}
-
-/* Additional specific targeting for dark mode */
-.dark-mode .userrowcontainer h1,
-.dark-mode .userrowcontainer .fullname,
-.dark-mode .userrowcontainer .username {
-  color: #ffffff !important;
-}
-
-.dark-mode .userrowcontainer p,
-.dark-mode .userrowcontainer .status,
-.dark-mode .userrowcontainer .offline,
-.dark-mode .userrowcontainer .online {
-  color: #b3b3b3 !important;
 }
